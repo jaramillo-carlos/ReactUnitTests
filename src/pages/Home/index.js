@@ -4,9 +4,11 @@ import React, { Component } from 'react';
 import User from '../../components/User';
 
 class Home extends Component {
+	/*
 	componentWillMount() {
-		// this.props.getDemoRequest('hey');
+		this.props.getDemoRequest('hey');
 	}
+	*/
 	render() {
 		const { users } = this.props;
 
@@ -19,6 +21,7 @@ class Home extends Component {
 		return <div>{items}</div>;
 	}
 }
+
 export default Home;
 
 /*
