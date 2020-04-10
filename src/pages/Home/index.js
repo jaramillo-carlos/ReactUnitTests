@@ -35,10 +35,11 @@ const mapStateToProps = state => {
 		users: state.demoReducer[0]
 	};
 };
-
+/*
 Home.propTypes = {
 	dispatch: PropTypes.func
 };
+*/
 
 export default Home;
 // export default connect(mapStateToProps, mapDispatchToProps)(Home);
