@@ -85,7 +85,8 @@ Not need install jest, because CRA install this.
 - `npm install --save enzyme enzyme-adapter-react-16`
 - Create setupTests with enzyme config to set adapter to enzyme config.
 - `--env=jsdom` is for mock browser in test environment
-- `npm i @material-ui/core`
+- `npm i @material-ui/core` create config/muiTheme.js and use provider in app.js
+- `npm i react-jss` create config/jssConfig.js, add `<!-- jss-insertion-point -->` in index.html and use provider in app.js
 ################### END ###################
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

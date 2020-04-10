@@ -3,18 +3,23 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { MuiThemeProvider } from '@material-ui/core/styles'
 import { Provider } from 'react-redux';
 import PropTypes from 'prop-types';
+import {JssProvider} from 'react-jss/dist/react-jss'
+
 import Home from './pages/Home'
 import customTheme from './config/muiTheme'
+import { jss, generateClassName } from './config/jssConfig'
 
 const App = ({ store }) => (
 	<Provider store={store}>
-		<MuiThemeProvider theme={customTheme}>
-			<Router>
-				<div>
-					<Route exact path="/" component={Home} />
-				</div>
-			</Router>
-		</MuiThemeProvider>
+		<JssProvider jss={jss} generateClassName={generateClassName}>
+			<MuiThemeProvider theme={customTheme}>
+				<Router>
+					<div>
+						<Route exact path="/" component={Home} />
+					</div>
+				</Router>
+			</MuiThemeProvider>
+		</JssProvider>
 	</Provider>
 );
 
