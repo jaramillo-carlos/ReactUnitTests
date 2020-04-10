@@ -1,3 +1,88 @@
+# Unit Test
+To be aplied in unity most small of a software (component). Are to confirm about they works good.
+
+# Integration Test
+Are a extension of unit test, later you test each part of functionality. You can test how to work integrating it.
+
+# Functional Test
+Usually maded by testing teams, called 'black box' because testing team analize input data and output data to define test cases.
+
+# Performance Test
+Are for test quality, escalability and security of system
+
+
+## Jest
+Any program feature without an automated test simply doesn't exist.
+Test Runer. Is a freamework to test, maded in javascript. Can be used in:
+- Babel
+- React
+- Typescript
+- NodeJs
+- Angular
+- Vue
+Was maded by facebook dev team like React. Are used by fb, ig, tw, airbnb, NyTimes, Spotify, etc..
+
+#### Why Jest?
+- Fast and safe
+When you run test and one fail, in the next execution this will run first the fail test.
+- Easy mocking
+- Great exceptions (output on errors)
+- Great api (documentation)
+
+## Enzyme
+Is a utility of testing in javascript (specially for react) was created to easily test in react components. Was maded by Airbnb. With Enzyme can manipule find and interact with elements of each component (div, p, img, any) like jquery (not the same).
+Alternative for mocha
+
+## Common Folder Structures
+````
+|- / main
+|  |- index.js
+|  |- index.test.js
+```
+
+````
+|- / main
+|  |- index.js
+|- / supporting
+|  |- fetch.js
+|- / tests
+|  |- /int
+|  |  |- api.test.js
+```
+
+````
+|- / main
+|  |- index.js
+|- / supporting
+|  |- fetch.js
+|- / __tests__
+|  |- /components
+|  |  |- index.test.js
+```
+
+## Example
+```javascript
+import React from 'react'
+import Enzyme, {shallow} from 'enzyme'
+import Adapter from 'enzyme-adapter-react-16'
+
+enzyme.configure({adapter: new Adapter()})
+
+import CheckboxWithLabel from '../CheckboxWithLabel'
+
+it('CheckboxWithLabel changes the text after click', () => {
+  const checkbox = shallow(<CheckboxWithLabel labelOn="On" labelOff="Off" />)
+  expect(checkbox.text()).toEqual('Off')
+  checkbox.find('input').simulate('change')
+  expect(checkbox.text()).toEqual('On')
+})
+```
+
+################### END ###################
+- `npx create-react-app unit-test-react`
+- `npm i axios react-redux react-router-dom redux redux-saga`
+################### END ###################
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
