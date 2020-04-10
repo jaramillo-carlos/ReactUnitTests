@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { getDemoRequest } from '../../redux/actions/demoActions';
+// import { getDemoRequest } from '../../redux/actions/demoActions';
 
 import User from '../../components/User';
 
 class Home extends Component {
 	componentWillMount() {
-		this.props.getDemoRequest('hey');
+		// this.props.getDemoRequest('hey');
 	}
 	render() {
 		const { users } = this.props;
@@ -40,4 +40,5 @@ Home.propTypes = {
 	dispatch: PropTypes.func
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default Home;
+// export default connect(mapStateToProps, mapDispatchToProps)(Home);

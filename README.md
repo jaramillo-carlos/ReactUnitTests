@@ -81,6 +81,10 @@ it('CheckboxWithLabel changes the text after click', () => {
 ################### END ###################
 - `npx create-react-app unit-test-react`
 - `npm i axios react-redux react-router-dom redux redux-saga`
+Not need install jest, because CRA install this.
+- `npm install --save enzyme enzyme-adapter-react-16`
+- Create setupTest with enzyme config to set adapter to enzyme config.
+- `--env=jsdom` is for mock browser in test environment
 ################### END ###################
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
