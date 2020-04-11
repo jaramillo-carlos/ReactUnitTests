@@ -1,6 +1,8 @@
 import { all } from 'redux-saga/effects';
-import watchDemo from './watcher';
+import login from './login';
+
 
 export default function* rootSaga() {
-	yield all([watchDemo()]);
+	// run all sagas
+	yield all([login()]);
 }
