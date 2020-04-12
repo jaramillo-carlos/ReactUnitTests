@@ -5,6 +5,7 @@ import {
 } from '../../consts/actionTypes'
 import { GITHUB_TOKEN } from '../../consts'
 import get from 'lodash/get'
+import { saveData } from '../../utils/storage'
 
 const initialState = {}
 
@@ -14,8 +15,10 @@ export default function(state = initialState, action) {
       return { ...state }
       break
     case GET_OAUTH_GITHUB_TOKEN_SUCCESS:
-      // return { ...state, githubToken: action.loginResponse.data.githubToken) }
-      return { ...state, githubToken: get(action, "loginResponse.data.githubToken") }
+      // const githubToken = action.loginResponse.data.githubToken)
+      const githubToken = get(action, "loginResponse.data.githubToken")
+      saveData(GITHUB_TOKEN, githubToken)
+      return { ...state, githubToken: githubToken}
       break
     case GET_OAUTH_GITHUB_TOKEN_ERROR:
       return { ...state, error: true }
