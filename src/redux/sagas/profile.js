@@ -30,12 +30,6 @@ export function* getProfileData({ payload: { githubToken } }) {
 // Generator function
 export function* getProfileRepos({ payload: { githubToken, repostUrl } }) {
   try {
-    const body = {
-      client_id: process.env.REACT_APP_GITHUB_CLIENT_ID,
-      client_secret: process.env.REACT_APP_GITHUB_CLIENT_SECRET,
-      code: payload.code
-    }
-
     // async call
     const userRepos = yield call(
       apiCall,
