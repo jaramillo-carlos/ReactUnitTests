@@ -7,6 +7,7 @@ import JssProvider from 'react-jss/lib/JssProvider';
 import customTheme from './config/muiTheme'
 import { jss, generateClassName } from './config/jssConfig'
 import routes from './routes'
+import "./styles/index.css"
 
 const App = ({ store }) => (
 	<Provider store={store}>

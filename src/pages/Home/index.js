@@ -25,15 +25,24 @@ class Home extends Component {
     this.props.getProfileData({ githubToken });
   }
 
-  render() {
-    const { classes } = this.props;
+  componentDidUpdate(prevProps, prevState) {
+    const { githubData, getProfileRepos } = this.props
+    const reposUrl = get(githubData, 'repos_url', null)
+    const prevReposUrl = get(prevProps, 'githubData.repos_url', null)
+    if (reposUrl && (prevReposUrl !== reposUrl)) {
+      getProfileRepos({ reposUrl })
+    }
+  }
+
+  render() { 
+    const { classes, githubData, githubUserRepos } = this.props;
     return (
       <Grid container className={classes.homeContainer}>
-        <Grid item xs={2} className={classes.leftContainer}>
-          <LeftContainer />
+        <Grid item xs={3} className={classes.leftContainer}>
+          <LeftContainer {...githubData} />
         </Grid>
-        <Grid item xs={10} className={classes.rightContainer}>
-          <RightContainer />
+        <Grid item xs={9} className={classes.rightContainer}>
+          <RightContainer repos={githubUserRepos} />
         </Grid>
       </Grid>
     )
@@ -49,7 +58,8 @@ const mapStateToProps = (state) => {
   console.log(state)
   return {
     // githubData: state.githubData
-    githubData: get(state, 'profile.githubData', null)
+    githubData: get(state, 'profile.githubData', null),
+    githubUserRepos: get(state, 'profile.userRepos', null)
   }
 }
 

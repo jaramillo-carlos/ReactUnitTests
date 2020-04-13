@@ -7,8 +7,6 @@ import {
   GET_PROFILE_GITHUB_REPOS_SUCCESS,
   GET_PROFILE_GITHUB_REPOS_ERROR
 } from '../../consts/actionTypes'
-import { GITHUB_TOKEN } from '../../consts'
-import { saveData } from '../../utils/storage'
 
 const initialState = {}
 
@@ -24,12 +22,10 @@ export default function (state = initialState, action) {
       return { ...state, error: true }
       break
     case GET_PROFILE_GITHUB_REPOS_START:
-      return { ...state }
+      return { ...state, error: null }
       break
     case GET_PROFILE_GITHUB_REPOS_SUCCESS:
-      const githubToken = get(action, "loginResponse.data.githubToken")
-      //saveData(GITHUB_TOKEN, githubToken)
-      return { ...state, githubToken: githubToken }
+      return { ...state, userRepos: get(action, "userRepos.data", []) }
       break
     case GET_PROFILE_GITHUB_REPOS_ERROR:
       return { ...state, error: true }

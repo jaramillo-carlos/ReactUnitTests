@@ -1,23 +1,19 @@
 export const styles = {
   homeContainer: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: '100vh',
-    overflow: 'hidden',
-    width: '100%'
+    height: "100vh",
+    overflow: "hidden"
   },
-  card: {
-    width: '400px',
-    minWidth: '300px',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center'
+  leftContainer: {
+    backgroundColor: "#546e7a",
+    color: "#fff",
+    height: "100vh",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "column"
   },
-  title: {
-    marginTop: 12,
-    fontSize: 18,
-    marginBottom: 4
+  rightContainer: {
+    height: "100%",
+    overflowY: "auto"
   }
 }

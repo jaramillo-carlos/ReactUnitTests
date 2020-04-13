@@ -19,7 +19,6 @@ export function* getProfileData({ payload: { githubToken } }) {
       null,
       null,
       'GET')
-
     // yield to wait, and put() from sagas
     yield put({ type: GET_PROFILE_GITHUB_DATA_SUCCESS, githubData })
   } catch (error) {
@@ -28,16 +27,15 @@ export function* getProfileData({ payload: { githubToken } }) {
 }
 
 // Generator function
-export function* getProfileRepos({ payload: { githubToken, repostUrl } }) {
+export function* getProfileRepos({ payload: { reposUrl } }) {
   try {
     // async call
     const userRepos = yield call(
       apiCall,
-      repostUrl,
+      reposUrl,
       null,
       null,
       'GET')
-
     // yield to wait, and put() from sagas
     yield put({ type: GET_PROFILE_GITHUB_REPOS_SUCCESS, userRepos })
   } catch (error) {
