@@ -16,6 +16,7 @@ class Login extends Component {
       this.props.getGithubToken({code: response.code})
     }
   }
+
   onFailure = response => {
     alert("No ha sido exitoso, intenta más tarde.");
   }
@@ -50,9 +51,11 @@ const actions = {
   getGithubToken
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state) => {
+  console.log(state);
+  return ({
   githubToken: state.login.githubToken
-})
+})}
 
 // export default withStyles(styles)(Login);
 // usually only need connect, but how this already have a HoC (withStyles),

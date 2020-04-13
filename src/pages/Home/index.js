@@ -1,44 +1,24 @@
 import React, { Component } from 'react';
-// import { getDemoRequest } from '../../redux/actions/demoActions';
-
-import User from '../../components/User';
+import Grid from '@material-ui/core/Grid'
+import { withStyles } from '@material-ui/core/styles'
+import { styles } from './styles'
+import RightContainer from './RightContainer'
+import LeftContainer from './LeftContainer'
 
 class Home extends Component {
-	/*
-	componentWillMount() {
-		this.props.getDemoRequest('hey');
-	}
-	*/
-	render() {
-		const { users } = this.props;
-
-		let items = [];
-		if (typeof users !== 'undefined') {
-			items = users.map((value, index) => {
-				return <User key={index} {...value} />;
-			});
-		}
-		return <div>{items}</div>;
-	}
+  render() {
+    const { classes } = this.props;
+    return (
+      <Grid container className={classes.homeContainer}>
+        <Grid item xs={2} className={classes.leftContainer}>
+          <LeftContainer/>
+        </Grid>
+        <Grid item xs={10} className={classes.rightContainer}>
+          <RightContainer/>
+        </Grid>
+      </Grid>
+    )
+  }
 }
 
-export default Home;
-
-/*
-const mapDispatchToProps = (dispatch, props) => {
-	return {
-		getDemoRequest: payload => {
-			dispatch(getDemoRequest(payload));
-		}
-	};
-};
-const mapStateToProps = state => {
-	return {
-		users: state.demoReducer[0]
-	};
-};
-Home.propTypes = {
-	dispatch: PropTypes.func
-};
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
-*/
+export default withStyles(styles)(Home);
