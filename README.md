@@ -188,6 +188,41 @@ test('should fetch users', () => {
 - .toThrow(error?)
 - more in documentation
 
+# SinonJS
+Test spy library. A test spy, is a functión that save arguments, return value, this value, and error.
+Exist two kinds.
+
+### Anonymous function
+```javascript
+  // cant expect what return callback, because has executed inside PubSub so send spy.
+  var callback = sinon.spy()
+  PubSub.subscribe("message", callback())
+  PubSub.publishSync("message")
+  assertTrue(callback.called)
+```
+
+### When Existing method
+```javascript
+  //  spy behaves like the original method, but you can have acces to calls info
+
+  //before each
+  setup: function () {
+    sinon.spy(jquery, "ajax")
+  }
+
+  tearDown: function () {
+    jquery.ajax.restore()
+  }
+
+  // test should inspect jQuery.getJSON's usage of jQuery.ajax
+  jQuery.getJSON('/some/resource')
+
+  asset(jQuery.ajax.calledOnce)
+  assertEquals('/some/resource', jQuery.ajax.getCall(0).args[0].url)
+  assertEquals('json', jQuery.ajax.getCall(0).args[0].dataType)
+```
+
+# Scripts
 
 ################### END ###################
 - `npx create-react-app unit-test-react`
