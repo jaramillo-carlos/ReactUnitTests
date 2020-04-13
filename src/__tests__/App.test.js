@@ -7,7 +7,7 @@ import { mount } from 'enzyme';
 // it // test case, he have 2 params 'name of test case' and function (test)
 // beforeAll // lifecycle of jest, before all test cases
 
-describe("<App", () => {
+describe.skip("<App/>", () => {
   let wrapper;
 
   beforeAll(() => {

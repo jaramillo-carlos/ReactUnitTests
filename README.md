@@ -78,6 +78,117 @@ it('CheckboxWithLabel changes the text after click', () => {
 })
 ```
 
+# Enzyme
+## Selectors
+### Valid CSS
+Get components by Tag name, Class, ID, syntax like ([href="foo"], [type="text"]), or universal (*)
+
+### Constructor
+Find componeny by constructor
+```javascript
+function MyTestComponent() {
+  return <div/>
+}
+const myComponents = wrapper.find(MyTestComponent) // find all results with this constructor
+```
+
+### displayName
+Find by displayName property
+```javascript
+function MyTestComponent() {
+  return <div/>
+}
+MyTestComponent.displayName= 'Testing';
+const myComponents = wrapper.find('Testing') // find one component with displayName Testing
+```
+
+### Props
+Find by props
+```javascript
+const wrapper = mount()((
+  <div>
+    <span title="foo" description="Lorem ipsum" />
+  </div>
+))
+wrapper.find({ title: 'foo'}) // return component
+wrapper.find({ description: 'Lorem ipsum'}) // return component
+wrapper.find({ title: 'bar'}) // return undefined
+```
+
+## Shallow Rendering
+Is one of the techniques to use and inspect components, and lifeCycle methods of this.
+Find one component contains others components inside, or find elements.
+shallow() spect a node(component) and extra optionals like (context and disableLifecycleMethods)
+
+## Globals
+default is a var, per default is 5 segs
+### beforeAll (fn, timeout)
+### beforeEach (fn, timeout)
+### describe (name, fn)
+### test or it (name, fn, timeout)
+
+## Mock Functions
+```javascript
+function forEach(items, callback) {
+  for (let index = 0; index < items.length; index++) {
+    callback(items[index])
+  }
+}
+const mockCallback = jest.fn(x => 42 + x)
+forEach([0, 1], mockCallback)
+
+// The mock function is called twice
+expect(mockCallback.mock.calls.length).toBe(2)
+
+// The first argument of the first call to the function was 0
+expect(mockCallback.mock.calls[0][0]).toBe(0)
+
+// The first argument of the second call to the function was 1
+expect(mockCallback.mock.calls[1][0]).toBe(1)
+
+// The first argument of the first call to the function was 42
+expect(mockCallback.mock.calls[0].value).toBe(42)
+```
+
+```javascript
+// users.test.js
+import axtios from 'axios'
+import Users from './users'
+
+jest.mock('axios')
+
+test('should fetch users', () => {
+  const users = [{name: 'Bob'}]
+  const resp = {data: users}
+
+  axios.get.mockResolvedValue(resp)
+  // or you could use the following depending on your use case:
+  // axios.get.mockImplementation(() => Promise.resolve(resp))
+  return Users.all().then(data => expect(data).toEqual(users))
+})
+```
+
+## Assertions
+### Expect
+- expect(value)
+
+#### Matchers:
+- .toBe(value)
+- .toHaveBeenCalled()
+- .toHaveBeenCalledTimes(number)
+- .toBeDefined()
+- .toBeFalsy()
+- .toBeGreaterThan(number)
+- .toBeNull()
+- .toBeTruthy()
+- .toBeUndefined()
+- .toBeNaN()
+- .toEqual(value)
+- .toHaveLength(number)
+- .toThrow(error?)
+- more in documentation
+
+
 ################### END ###################
 - `npx create-react-app unit-test-react`
 - `npm i axios react-redux react-router-dom redux redux-saga prop-types`
@@ -87,6 +198,7 @@ Not need install jest, because CRA install this.
 - `--env=jsdom` is for mock browser in test environment
 - `npm i @material-ui/core` create config/muiTheme.js and use provider in app.js
 - `npm i react-jss` create config/jssConfig.js, add `<!-- jss-insertion-point -->` in index.html and use provider in app.js
+
 
 ################### END ###################
 
