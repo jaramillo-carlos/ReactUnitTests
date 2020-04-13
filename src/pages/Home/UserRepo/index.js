@@ -9,13 +9,13 @@ import moment from "moment";
 
 import { styles } from "./styles";
 
-const UserRepo = ({ classes, description, name, html_url, license, language, created_at }) => (
+const UserRepo = ({ classes, description, name, html_url, license, language, created_at, onLogout }) => (
   <Card key={name} className={classes.cardContainer}>
     <Typography className={cx(classes.repoFont, classes.repoTitle)}>{name}</Typography>
     <Typography className={cx(classes.repoDescription, classes.repoFont)}>{description}</Typography>
     <Typography className={cx(classes.repoFont, classes.repoCreatedDate)}>{moment(created_at).format("LL")}</Typography>
     <a href={html_url} target="_blank" className={classes.repoLink}>
-      <IconButton>
+      <IconButton onClick={onLogout}>
         <Icon>link</Icon>
       </IconButton>
     </a>

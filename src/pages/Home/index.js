@@ -9,7 +9,7 @@ import { getProfileData, getProfileRepos } from '../../redux/actions/profile'
 import { styles } from './styles'
 import RightContainer from './RightContainer'
 import LeftContainer from './LeftContainer'
-import { getData } from '../../utils/storage'
+import { getData, clearStorage } from '../../utils/storage'
 import { GITHUB_TOKEN } from '../../consts'
 
 class Home extends Component {
@@ -34,12 +34,17 @@ class Home extends Component {
     }
   }
 
+  handleLogoutClick = () => {
+    clearStorage();
+    window.location.reload();
+  }
+
   render() { 
     const { classes, githubData, githubUserRepos } = this.props;
     return (
       <Grid container className={classes.homeContainer}>
         <Grid item xs={3} className={classes.leftContainer}>
-          <LeftContainer {...githubData} />
+          <LeftContainer {...githubData} onLogout={this.handleLogoutClick} />
         </Grid>
         <Grid item xs={9} className={classes.rightContainer}>
           <RightContainer repos={githubUserRepos} />
