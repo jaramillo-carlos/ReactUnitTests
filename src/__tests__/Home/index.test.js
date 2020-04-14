@@ -7,7 +7,6 @@ import { GITHUB_TOKEN } from '../../consts'
 
 describe("<Home />", () => {
   let wrapper;
-  let didmount;
 
   const props = {
     classes: {},
@@ -20,10 +19,11 @@ describe("<Home />", () => {
   const localStorage = {
     getItem: sinon.spy(), // is the same that jest.fn()
     setItem: sinon.spy(), // is the same that jest.fn()
-    clear: sinon.spy(), // is the same that jest.fn()
+    clear: sinon.spy() // is the same that jest.fn()
   }
 
   global.localStorage = localStorage;
+  global.location.reload = sinon.spy();
 
   beforeEach(() => {
     wrapper = mount(<Home {...props} />)
@@ -45,15 +45,39 @@ describe("<Home />", () => {
   })
 
   it("Call localStorage and getProfileData in comonentDidMount", () => {
-    console.log(wrapper.state())
-    console.log(localStorage.getItem())
-    // expect(wrapper.state().githubToken).toBeUndefined();
+    // console.log(wrapper.state())
 
-    expect(localStorage.getItem.getCall(0)).toBeDefined(); //.getCall(0) to accest to first call
-    expect(localStorage.getItem.getCall(0).lastArg).toEqual(GITHUB_TOKEN);
+    // console.log(localStorage)
+
+    expect(wrapper.state().githubToken).toEqual(null) // can't be .toBeUndefined(); like tutorial, because localStorage return null
+
+    // console.log(localStorage.getItem.firstCall)
+
+    // expect(localStorage.getItem.getCall(0)).toBeDefined(); //.getCall(0) to accest to first call
+    // expect(localStorage.getItem.getCall(0).lastArg).toEqual(GITHUB_TOKEN);
 
     expect(wrapper.props().getProfileData.getCall(0)).toBeTruthy();
     expect(wrapper.props().getProfileData.getCall).toHaveLength(1);
-    expect(wrapper.props().getProfileData.getCall(0).lastArg).toEqual({});
+    expect(wrapper.props().getProfileData.getCall(0).lastArg).toBeDefined(); // can't be .toEqual({}); like tutorial, because that send githubToken
   })
+
+  it("call getProfileRepos when reposUrl Exists", () => {
+    expect(wrapper.instance().props.getProfileRepos.getCall(0)).toBeFalsy();
+    wrapper.setProps({ githubData: { repos_url: "something.com.mx" } });
+    expect(wrapper.instance().props.getProfileRepos.getCall(0)).toBeDefined();
+    expect(wrapper.instance().props.getProfileRepos.getCall(0).lastArg).toBeDefined();
+  });
+
+  it("Clear Storage and refresh site", () => {
+    expect(location.reload.getCall(0)).toBeFalsy();
+    //expect(localStorage.clear.getCall(0)).toBeFalsy();
+
+    wrapper.instance().handleLogoutClick();
+
+    // expect(localStorage.clear.getCall(0)).toBeTruthy();
+    // expect(localStorage.clear.getCall(0).lastArg).toBeUndefined();
+
+    expect(location.reload.getCall(0)).toBeTruthy();
+    expect(location.reload.getCall(0).lastArg).toBeUndefined();
+  });
 })
