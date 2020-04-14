@@ -17,17 +17,17 @@ const LeftContainer = ({
   name,
   onLogout
 }) => (
-  <>
-    <Avatar alt={email} src={avatar_url} className={classes.avatar} />
-    <Typography className={classes.textFont}>{name}</Typography>
-    <Typography className={classes.textFont}>{email}</Typography>
-    <Typography className={classes.textFont}>{blog}</Typography>
-    <Typography className={classes.textFont}>{bio}</Typography>
-    <IconButton onClick={onLogout}>
-      <Icon>logout</Icon>
-    </IconButton>
-  </>
-);
+    <div>
+      <Avatar alt={email} src={avatar_url} className={classes.avatar} />
+      <Typography className={classes.textFont}>{name}</Typography>
+      <Typography className={classes.textFont}>{email}</Typography>
+      <Typography className={classes.textFont}>{blog}</Typography>
+      <Typography className={classes.textFont}>{bio}</Typography>
+      <IconButton onClick={onLogout}>
+        <Icon>logout</Icon>
+      </IconButton>
+    </div>
+  );
 
 export { LeftContainer };
 
