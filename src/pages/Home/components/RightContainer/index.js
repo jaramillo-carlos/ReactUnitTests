@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import isEmpty from "lodash/isEmpty";
-import UserRepo from "../UserRepo";
+import UserRepo from "../../UserRepo";
 
 class RightContainer extends Component {
   renderRepos() {

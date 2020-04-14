@@ -115,7 +115,7 @@ wrapper.find({ description: 'Lorem ipsum'}) // return component
 wrapper.find({ title: 'bar'}) // return undefined
 ```
 
-## Shallow Rendering
+## Shallow Rendering (shallow)
 Is one of the techniques to use and inspect components, and lifeCycle methods of this.
 Find one component contains others components inside, or find elements.
 shallow() spect a node(component) and extra optionals like (context and disableLifecycleMethods)
@@ -220,6 +220,33 @@ Exist two kinds.
   asset(jQuery.ajax.calledOnce)
   assertEquals('/some/resource', jQuery.ajax.getCall(0).args[0].url)
   assertEquals('json', jQuery.ajax.getCall(0).args[0].dataType)
+```
+
+# Full DOM Rendering (mount)
+used when you need test lifeCycles of component, or when is wrapped on HoC like (withStyles).
+The main difference with shallow, is this mount the component in DOM. Shallow no.
+
+```javascript
+  it('calls componentDidMount', () => {
+    sinon.spy(Foo.prototype, 'componentDidMount');
+    const wrapper = mount(<Foo />);
+    expect(Foo.prototype.componentDidMount).to.have.property('callCount', 1);
+  });
+  it('allows us to set props', () => {
+    const wrapper = mount(<Foo bar="baz" />);
+    expect(wrapper.props().bar).to.equal('baz');
+    wrapper.setProps({ bar: 'foo' });
+    expect(wrapper.props().bar).to.equal('foo');
+  });
+
+  it('simulates click events', () => {
+    const onButtonClick = sinon.spy();
+    const wrapper = mount((
+      <Foo onButtonClick={onButtonClick} />
+    ));
+    wrapper.find('button').simulate('click');
+    expect(onButtonClick).to.have.property('callCount', 1);
+  });
 ```
 
 # Scripts

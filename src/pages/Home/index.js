@@ -7,15 +7,15 @@ import get from 'lodash/get'
 
 import { getProfileData, getProfileRepos } from '../../redux/actions/profile'
 import { styles } from './styles'
-import RightContainer from './RightContainer'
-import LeftContainer from './LeftContainer'
+import RightContainer from './components/RightContainer'
+import LeftContainer from './components/LeftContainer'
 import { getData, clearStorage } from '../../utils/storage'
 import { GITHUB_TOKEN } from '../../consts'
 
 class Home extends Component {
 
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
     this.state = { githubToken: null }
   }
 
@@ -39,7 +39,7 @@ class Home extends Component {
     window.location.reload();
   }
 
-  render() { 
+  render() {
     const { classes, githubData, githubUserRepos } = this.props;
     return (
       <Grid container className={classes.homeContainer}>
@@ -72,3 +72,5 @@ export default compose(
   connect(mapStateToProps, actions),
   withStyles(styles)
 )(Home)
+
+export { Home }
