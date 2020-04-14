@@ -29,10 +29,6 @@ When you run test and one fail, in the next execution this will run first the fa
 - Great exceptions (output on errors)
 - Great api (documentation)
 
-## Enzyme
-Is a utility of testing in javascript (specially for react) was created to easily test in react components. Was maded by Airbnb. With Enzyme can manipule find and interact with elements of each component (div, p, img, any) like jquery (not the same).
-Alternative for mocha
-
 ## Common Folder Structures
 ````
 |- / main
@@ -78,8 +74,13 @@ it('CheckboxWithLabel changes the text after click', () => {
 })
 ```
 
-# Enzyme
+## Enzyme
+Is a utility of testing in javascript (specially for react) was created to easily test in react components. Was maded by Airbnb. With Enzyme can manipule find and interact with elements of each component (div, p, img, any) like jquery (not the same).
+Alternative for mocha
+Have 3 kinds of rendering (ShallowRendering(shallow), FullDomRendering(mount), and StaticRendering(render))
+
 ## Selectors
+
 ### Valid CSS
 Get components by Tag name, Class, ID, syntax like ([href="foo"], [type="text"]), or universal (*)
 
@@ -248,6 +249,28 @@ The main difference with shallow, is this mount the component in DOM. Shallow no
     expect(onButtonClick).to.have.property('callCount', 1);
   });
 ```
+
+# Static Rendering (render)
+Used for generate HTML of our React Tree, yo analize the structure. The difference with Shallow and Mount is this use a 3rd party library. Called Cheerio to parse HTML.
+Cheerio is a fast, flexible and lean implementation of jQuery designed specifically for the server.
+
+```javascript
+it('renders three `.foo-bar`s', () => {
+  const wrapper = render(<Foo />)
+  expect(wrapper.find('.foo-bar')).to.have.lengthOf(3)
+})
+
+it('rendered the title', () => {
+  const wrapper = render(<Foo title="unique" />)
+  expect(wrapper.text()).to.contain('unique')
+})
+
+it('renders a div', () => {
+  const wrapper = render(<div className="myClass" />)
+  expect(wrapper.html()).to.contain('div')
+})
+```
+
 
 # Scripts
 
