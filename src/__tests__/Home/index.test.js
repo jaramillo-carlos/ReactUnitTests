@@ -52,10 +52,10 @@ describe("<Home />", () => {
     expect(wrapper.state().githubToken).toEqual(null) // can't be .toBeUndefined(); like tutorial, because localStorage return null
 
     console.log(localStorage.getItem.firstCall)
-
-    // expect(localStorage.getItem.getCall(0)).toBeDefined(); //.getCall(0) to accest to first call
-    // expect(localStorage.getItem.getCall(0).lastArg).toEqual(GITHUB_TOKEN);
-
+    /* TEST FAILING
+    expect(localStorage.getItem.getCall(0)).toBeDefined(); //.getCall(0) to accest to first call
+    expect(localStorage.getItem.getCall(0).lastArg).toEqual(GITHUB_TOKEN);
+    */
     expect(wrapper.props().getProfileData.getCall(0)).toBeTruthy();
     expect(wrapper.props().getProfileData.getCall).toHaveLength(1);
     expect(wrapper.props().getProfileData.getCall(0).lastArg).toBeDefined(); // can't be .toEqual({}); like tutorial, because that send githubToken
@@ -74,8 +74,10 @@ describe("<Home />", () => {
 
     wrapper.instance().handleLogoutClick();
 
-    // expect(localStorage.clear.getCall(0)).toBeTruthy();
-    // expect(localStorage.clear.getCall(0).lastArg).toBeUndefined();
+    /* TEST FAILING
+    expect(localStorage.clear.getCall(0)).toBeTruthy();
+    expect(localStorage.clear.getCall(0).lastArg).toBeUndefined();
+    */
 
     expect(location.reload.getCall(0)).toBeTruthy();
     expect(location.reload.getCall(0).lastArg).toBeUndefined();

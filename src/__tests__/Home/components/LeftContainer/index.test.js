@@ -3,7 +3,6 @@ import { render } from 'enzyme'
 import sinon from 'sinon'
 
 import { LeftContainer } from '../../../../pages/Home/components/LeftContainer'
-import { ExpansionPanelActions } from '@material-ui/core'
 
 describe("<LeftContainer />", () => {
   const props = {

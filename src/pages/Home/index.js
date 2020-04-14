@@ -68,9 +68,9 @@ const mapStateToProps = (state) => {
   }
 }
 
+export { Home };
+
 export default compose(
   connect(mapStateToProps, actions),
   withStyles(styles)
 )(Home)
-
-export { Home }
