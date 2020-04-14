@@ -46,8 +46,14 @@ describe("<Home />", () => {
 
   it("Call localStorage and getProfileData in comonentDidMount", () => {
     console.log(wrapper.state())
+    console.log(localStorage.getItem())
     // expect(wrapper.state().githubToken).toBeUndefined();
-    expect(localStorage.getItem.getCall(0)).toBeDefined() //.getCall(0) to accest to first call
-    expect(localStorage.getItem.getCall(0).lastArg).toEqual(GITHUB_TOKEN)
+
+    expect(localStorage.getItem.getCall(0)).toBeDefined(); //.getCall(0) to accest to first call
+    expect(localStorage.getItem.getCall(0).lastArg).toEqual(GITHUB_TOKEN);
+
+    expect(wrapper.props().getProfileData.getCall(0)).toBeTruthy();
+    expect(wrapper.props().getProfileData.getCall).toHaveLength(1);
+    expect(wrapper.props().getProfileData.getCall(0).lastArg).toEqual({});
   })
 })
