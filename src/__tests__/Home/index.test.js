@@ -3,7 +3,6 @@ import { mount } from 'enzyme';
 import sinon from 'sinon';
 
 import { Home } from '../../pages/Home';
-import { GITHUB_TOKEN } from '../../consts'
 
 describe("<Home />", () => {
   let wrapper;
