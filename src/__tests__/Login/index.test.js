@@ -3,6 +3,7 @@ import { shallow } from 'enzyme';
 
 import { Login } from '../../pages/Login';
 import { Card } from '@material-ui/core';
+import TestRenderer from 'react-test-renderer';
 
 let wrapper;
 
@@ -76,5 +77,16 @@ describe("<Login/>", () => {
     expect(window.alert).toHaveBeenCalled();
     expect(window.alert).toHaveBeenCalledTimes(1);
   })
+
+  it("El snapshot es correcto", () => {
+    const props = {
+      classes: {container: "container"},
+      getGithubToken: jest.fn()
+    };
+
+    const tree = TestRenderer.create(<Login {...props} />);
+    // console.log(tree.toJSON());
+    expect(tree.toJSON()).toMatchSnapshot();
+  });
 
 })

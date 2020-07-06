@@ -272,6 +272,73 @@ it('renders a div', () => {
 ```
 
 
+# Redux Unit Test
+## SAGAS
+Have two ways to test our saga:
+1. Test step by step the generator function (it is more fragile, and can trigger many errors)
+2. Run the saga and assert the result on the end. (is most recommended by sagateam, because is most consistent)
+
+- runSaga (execute saga outside middleware. Only for test)
+- sinon.stub (can be replaced with jest)
+- callsFake (can be replaced with jest)
+
+## Sinon.stub
+They are spy functions with pre-programmed behavior. As spies, stubs can be anonymous or wrap specific functions.
+When an existing function is wrapped with a stub, the original function is not called
+
+```javascript
+var stub = sinon.stub();
+var stub = sinon.stub(object, "method");
+var stub = sinon.stub(obj, "meth").callsFake(fn); // fn is the function to be executed on call meth
+```
+
+## Actions
+Actions are pure functions that return a flat object. When testing these, you can review the returning object, that is, compare it with the expected output.
+
+```javascript
+import * as actions from '../../actions/TodoActions';
+import * as types from '../../constants/TodoTypes';
+
+describe('actions', () => {
+  it('should create an action to add a todo', () => {
+    const text = 'Finihs docs';
+    const expectedActions = {
+      type: types.ADD_TODO,
+      text
+    };
+    expect(actions.addTodo(text)).toEqual(expectedActions);
+  });
+});
+```
+
+## Reducer
+A reducer should return a new state after applying the action to the previous state.
+
+```javascript
+import * as types from '../../constants/ActionTypes';
+import Reducer from '../../structuring-reducers/todos';
+
+describe('todos reducer', () => {
+  it('should return the initial state', () => {
+    expect(reducer(undefined, {})).toEqual([{
+      text: 'Use Redux',
+      completed: false,
+      id: 0,
+    }]);
+  });
+});
+```
+
+## Snapshot Testing
+Son de mucha ayuda cuando quieres asegurarte que  la UI no cambia repentinamente. Es preferible usarlos en interfaces que no cambian constantemente, como footers.
+
+Se basacan en crear un valor serializable de tu react tree, es decir, no se renderiza la interfaz gráfica. En este caso necesitamos de un test renderer para generarlo.
+
+### react-test-renderer
+Este paquete proporciona un procesador de React que se puede usar para procesar componentes de React a objetos Javascript puros, sin depender del DOM o de un entorno móvil nativo.
+
+Básicamente, este paquete facilita tomar una instantánea de la jerarquía de la vista de la plataforma (similar a un árbol DOM) representada por un componente React DOM o React Native sin usar un navegador o jsdom.
+
 # Scripts
 
 ################### END ###################
