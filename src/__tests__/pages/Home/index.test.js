@@ -2,7 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import sinon from 'sinon';
 
-import { Home } from '../../pages/Home';
+import { Home } from '../../../pages/Home';
 
 describe("<Home />", () => {
   let wrapper;
@@ -50,7 +50,7 @@ describe("<Home />", () => {
 
     expect(wrapper.state().githubToken).toEqual(null) // can't be .toBeUndefined(); like tutorial, because localStorage return null
 
-    console.log(localStorage.getItem.firstCall)
+    // console.log(localStorage.getItem.firstCall)
     /* TEST FAILING
     expect(localStorage.getItem.getCall(0)).toBeDefined(); //.getCall(0) to accest to first call
     expect(localStorage.getItem.getCall(0).lastArg).toEqual(GITHUB_TOKEN);

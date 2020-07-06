@@ -1,8 +1,7 @@
 import React from 'react'
 import { render } from 'enzyme'
-import sinon from 'sinon'
 
-import RightContainer from '../../../../pages/Home/components/RightContainer'
+import RightContainer from '../../../../../pages/Home/components/RightContainer/index';
 
 describe("<RightContainer />", () => {
   let wrapper
@@ -31,7 +30,7 @@ describe("<RightContainer />", () => {
   })
 
   it("render success when have repos", () => {
-    console.log(wrapper.html())
+    // console.log(wrapper.html())
     expect(wrapper).toBeDefined()
     expect(wrapper.html()).toBeDefined()
     expect(wrapper.find('RightContainer')).toBeDefined()

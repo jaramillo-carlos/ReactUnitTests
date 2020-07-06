@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { Login } from '../../pages/Login';
+import { Login } from '../../../pages/Login';
 import { Card } from '@material-ui/core';
 import TestRenderer from 'react-test-renderer';
 

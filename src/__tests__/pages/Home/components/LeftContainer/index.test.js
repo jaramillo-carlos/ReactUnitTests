@@ -2,7 +2,7 @@ import React from 'react'
 import { render } from 'enzyme'
 import sinon from 'sinon'
 
-import { LeftContainer } from '../../../../pages/Home/components/LeftContainer'
+import { LeftContainer } from '../../../../../pages/Home/components/LeftContainer'
 
 describe("<LeftContainer />", () => {
   const props = {
