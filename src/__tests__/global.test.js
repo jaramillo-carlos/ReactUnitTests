@@ -63,7 +63,16 @@ const reverseStringPromise = str => {
 };
 
 test('Probar una promesa', () => {
+  // if dont return this dont be validated, need return or use done
+  reverseStringPromise('Hola').then(string => expect(string).toBe('aaloH')); //ignored
   return reverseStringPromise('Hola').then(string => expect(string).toBe('aloH'));
+});
+
+test('Probar una promesa', (done) => {
+  reverseStringPromise('Hola').then(string => {
+    expect(string).toBe('aloH')
+    done(); //need use this done to indicate when will be finished, or return the promise
+  });
 });
 
 test('Probar async/await', async () => {
