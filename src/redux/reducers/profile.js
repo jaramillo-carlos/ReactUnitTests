@@ -14,22 +14,22 @@ export default function (state = initialState, action) {
   switch (action.type) {
     case GET_PROFILE_GITHUB_DATA_START:
       return { ...state, error: null, githubData: null }
-      break
+      // break
     case GET_PROFILE_GITHUB_DATA_SUCCESS:
       return { ...state, githubData: get(action, "githubData.data") }
-      break
+      // break
     case GET_PROFILE_GITHUB_DATA_ERROR:
       return { ...state, error: true }
-      break
+      // break
     case GET_PROFILE_GITHUB_REPOS_START:
       return { ...state, error: null }
-      break
+      // break
     case GET_PROFILE_GITHUB_REPOS_SUCCESS:
       return { ...state, userRepos: get(action, "userRepos.data", []) }
-      break
+      // break
     case GET_PROFILE_GITHUB_REPOS_ERROR:
       return { ...state, error: true }
-      break
+      // break
     default:
       return { ...state }
   }
