@@ -4,37 +4,39 @@
 name: Node.js CI
 
 on:
-#  push:
-#    branches: [ master ]
-#  pull_request:
-#    branches: [ master ]
-   workflow_dispatch: # dispatch manual integration
+  #  push:
+  #    branches: [ master ]
+  #  pull_request:
+  #    branches: [ master ]
+  workflow_dispatch: # dispatch manual integration
 
 env:
   NODE_VERSION: '15.x'
-  
+
 jobs:
   test:
-    runs-on: ubuntu-latest
+    # runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy: # To run in multiples versions of node
+      matrix:
+        os: [ubuntu-16.04, ubuntu-18.04, ubuntu-20.04, windows-2019, macos-11.0]
     steps:
-    - name: Get app code
-      uses: actions/checkout@master # @tag of release
-      
-    - name: Use Node.js ${{ env.NODE_VERSION }}
-      uses: actions/setup-node@v1
-      with: 
-        node-version: ${{ env.NODE_VERSION }}
-      
-#    - uses: borales/actions-yarn@v2.0.0
-#      with:
-#        cmd: install # will run `yarn install` command
-      
-    - name: Install and Run Tests
-      run: |
-        npm install
-        npm test
+      - name: Get app code
+        uses: actions/checkout@master # @tag of release
 
-    - name: Run Tests
-      run: npm test
+      - name: Use Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ env.NODE_VERSION }}
 
+      #    - uses: borales/actions-yarn@v2.0.0
+      #      with:
+      #        cmd: install # will run `yarn install` command
 
+      - name: Install and Run Tests on ${{ matrix.os }}
+        run: |
+          npm install
+          npm test
+
+      - name: Run Tests
+        run: npm test
