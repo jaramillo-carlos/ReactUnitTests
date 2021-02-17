@@ -31,10 +31,10 @@ jobs:
       
     - name: Install and Run Tests
       run: |
-        npm run install
-        npm run test
+        npm install
+        npm test
 
     - name: Run Tests
-      run: npm run test
+      run: npm test
 
 
