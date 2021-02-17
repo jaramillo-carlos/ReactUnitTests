@@ -14,7 +14,7 @@ const UserRepo = ({ classes, description, name, html_url, license, language, cre
     <Typography className={cx(classes.repoFont, classes.repoTitle)}>{name}</Typography>
     <Typography className={cx(classes.repoDescription, classes.repoFont)}>{description}</Typography>
     <Typography className={cx(classes.repoFont, classes.repoCreatedDate)}>{moment(created_at).format("LL")}</Typography>
-    <a href={html_url} target="_blank" className={classes.repoLink}>
+    <a href={html_url} target="_blank" className={classes.repoLink} rel="noopener noreferrer">
       <IconButton onClick={onLogout}>
         <Icon>link</Icon>
       </IconButton>
