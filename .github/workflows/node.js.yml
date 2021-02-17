@@ -94,7 +94,7 @@ jobs:
       - name: Push on branch
         run: |
           git add .
-          git commit - "deploy build"
+          git commit -m "deploy build"
           git push -u origin/gh-pages
 
       # - name: Publish generated content to GitHub Pages
