@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "./static/css/main.c3ca6c37.chunk.css",
-    "main.js": "./static/js/main.c6a31616.chunk.js",
-    "main.js.map": "./static/js/main.c6a31616.chunk.js.map",
-    "runtime-main.js": "./static/js/runtime-main.ebd294bb.js",
-    "runtime-main.js.map": "./static/js/runtime-main.ebd294bb.js.map",
-    "static/js/2.b0398ceb.chunk.js": "./static/js/2.b0398ceb.chunk.js",
-    "static/js/2.b0398ceb.chunk.js.map": "./static/js/2.b0398ceb.chunk.js.map",
-    "index.html": "./index.html",
-    "precache-manifest.12fa8e81312d4f64db7f91e5a96e724a.js": "./precache-manifest.12fa8e81312d4f64db7f91e5a96e724a.js",
-    "service-worker.js": "./service-worker.js",
-    "static/css/main.c3ca6c37.chunk.css.map": "./static/css/main.c3ca6c37.chunk.css.map",
-    "static/js/2.b0398ceb.chunk.js.LICENSE.txt": "./static/js/2.b0398ceb.chunk.js.LICENSE.txt"
+    "main.css": "https://jaramillo-carlos.github.io/react-unit-test-github-api/static/css/main.c3ca6c37.chunk.css",
+    "main.js": "https://jaramillo-carlos.github.io/react-unit-test-github-api/static/js/main.1c98ae1c.chunk.js",
+    "main.js.map": "https://jaramillo-carlos.github.io/react-unit-test-github-api/static/js/main.1c98ae1c.chunk.js.map",
+    "runtime-main.js": "https://jaramillo-carlos.github.io/react-unit-test-github-api/static/js/runtime-main.4fa65a6e.js",
+    "runtime-main.js.map": "https://jaramillo-carlos.github.io/react-unit-test-github-api/static/js/runtime-main.4fa65a6e.js.map",
+    "static/js/2.b0398ceb.chunk.js": "https://jaramillo-carlos.github.io/react-unit-test-github-api/static/js/2.b0398ceb.chunk.js",
+    "static/js/2.b0398ceb.chunk.js.map": "https://jaramillo-carlos.github.io/react-unit-test-github-api/static/js/2.b0398ceb.chunk.js.map",
+    "index.html": "https://jaramillo-carlos.github.io/react-unit-test-github-api/index.html",
+    "precache-manifest.a8e86ac13f347b6d3a51679663d1809b.js": "https://jaramillo-carlos.github.io/react-unit-test-github-api/precache-manifest.a8e86ac13f347b6d3a51679663d1809b.js",
+    "service-worker.js": "https://jaramillo-carlos.github.io/react-unit-test-github-api/service-worker.js",
+    "static/css/main.c3ca6c37.chunk.css.map": "https://jaramillo-carlos.github.io/react-unit-test-github-api/static/css/main.c3ca6c37.chunk.css.map",
+    "static/js/2.b0398ceb.chunk.js.LICENSE.txt": "https://jaramillo-carlos.github.io/react-unit-test-github-api/static/js/2.b0398ceb.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.ebd294bb.js",
+    "static/js/runtime-main.4fa65a6e.js",
     "static/js/2.b0398ceb.chunk.js",
     "static/css/main.c3ca6c37.chunk.css",
-    "static/js/main.c6a31616.chunk.js"
+    "static/js/main.1c98ae1c.chunk.js"
   ]
 }
