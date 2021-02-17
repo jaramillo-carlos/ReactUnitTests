@@ -19,7 +19,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy: # To run in multiples versions of node
       matrix:
-        os: [ubuntu-16.04, ubuntu-18.04, ubuntu-20.04, windows-2019, macos-latest]
+        os:
+          [ubuntu-16.04, ubuntu-18.04, ubuntu-20.04, windows-2019, macos-latest]
     steps:
       - name: Get app code
         uses: actions/checkout@master # @tag of release
@@ -40,3 +41,26 @@ jobs:
 
       - name: Run Tests
         run: npm test
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get app code
+        uses: actions/checkout@master # @tag of release
+
+      - name: Use Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Install
+        run: npm install
+
+      - name: Build
+        run: npm run build # generate a artifact
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: artifact
+          path: build/ # or path/to/artifact
