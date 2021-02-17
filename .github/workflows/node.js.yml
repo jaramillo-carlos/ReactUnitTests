@@ -77,5 +77,13 @@ jobs:
         with:
           name: artifact
           path: .
+
       - name: Display structure of downloaded files
         run: ls -R
+
+      - name: Publish generated content to GitHub Pages
+        uses: tsunematsu21/actions-publish-gh-pages@v1.0.1
+        with:
+          # dir: .
+          # branch: gh-pages
+          token: ${{ secrets.ACCESS_TOKEN }}
