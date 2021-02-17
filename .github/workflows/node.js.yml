@@ -23,7 +23,7 @@ jobs:
           [ubuntu-16.04]
           # [ubuntu-16.04, ubuntu-18.04, ubuntu-20.04, windows-2019, macos-latest]
     env:
-      NODE_ENV: local
+      REACT_APP_STAGE: local
     steps:
       - name: Get app code
         uses: actions/checkout@master 
@@ -64,7 +64,7 @@ jobs:
       - name: Build
         run: npm run build # generate a artifact
         env: 
-          NODE_ENV: staging
+          REACT_APP_STAGE: staging
           PUBLIC_URL: ./
           # PUBLIC_URL: "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
 
