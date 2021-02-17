@@ -72,11 +72,13 @@ jobs:
       - build
     runs-on: ubuntu-latest
     steps:
-      - name: Setup git branch
-        run: |
-          git branch -D gh-pages
-          git checkout --orphan gh-pages
-          git rm -rf .
+      - name: Checkout git branch
+        uses: actions/checkout@gh-pages
+        with:
+          ref: gh-pages
+
+      - name: Delete source code
+        run: git rm -rf .
 
       - name: Download artifact
         uses: actions/download-artifact@v2
@@ -91,10 +93,11 @@ jobs:
         run: |
           git add .
           git commit - "deploy build"
+          git push -u origin/gh-pages
 
-      - name: Publish generated content to GitHub Pages
-        uses: tsunematsu21/actions-publish-gh-pages@v1.0.1
-        with:
-          # dir: .
-          # branch: gh-pages
-          token: ${{ secrets.ACCESS_TOKEN }}
+      # - name: Publish generated content to GitHub Pages
+      #   uses: tsunematsu21/actions-publish-gh-pages@v1.0.1
+      #   with:
+      #     # dir: .
+      #     # branch: gh-pages
+      #     token: ${{ secrets.ACCESS_TOKEN }}
