@@ -24,7 +24,8 @@ jobs:
           # [ubuntu-16.04, ubuntu-18.04, ubuntu-20.04, windows-2019, macos-latest]
     steps:
       - name: Get app code
-        uses: actions/checkout@master # @tag of release
+        uses: actions/checkout@master 
+        # @tag of release
 
       - name: Use Node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v1
@@ -47,7 +48,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Get app code
-        uses: actions/checkout@master # @tag of release
+        uses: actions/checkout@master 
+        # @tag of release
 
       - name: Use Node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v1
@@ -73,7 +75,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout git branch
-        uses: actions/checkout@gh-pages
+        uses: actions/checkout@master
         with:
           ref: gh-pages
 
