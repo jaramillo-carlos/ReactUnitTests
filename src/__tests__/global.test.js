@@ -64,7 +64,7 @@ const reverseStringPromise = str => {
 
 test('Probar una promesa', () => {
   // if dont return this dont be validated, need return or use done
-  reverseStringPromise('Hola').then(string => expect(string).toBe('aaloH')); //ignored
+  // reverseStringPromise('Hola').then(string => expect(string).toBe('aaloH')); //ignored
   return reverseStringPromise('Hola').then(string => expect(string).toBe('aloH'));
 });
 
