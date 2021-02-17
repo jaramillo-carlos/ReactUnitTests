@@ -61,6 +61,8 @@ jobs:
 
       - name: Build
         run: npm run build # generate a artifact
+        env: 
+          PUBLIC_URL: ${{ github.repository }}
 
       - name: Upload artifact
         uses: actions/upload-artifact@v2
