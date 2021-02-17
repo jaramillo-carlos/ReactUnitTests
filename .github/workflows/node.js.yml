@@ -93,6 +93,8 @@ jobs:
 
       - name: Push on branch
         run: |
+          git config --global user.email "${{ github.actor }}"
+          git config --global user.name "${{ github.repository_owner }}"
           git add .
           git commit -m "deploy build"
           git push -u origin/gh-pages
