@@ -83,8 +83,13 @@ jobs:
         with:
           ref: gh-pages
 
-      - name: Delete source code
-        run: git rm -rf .
+      - name: Clean last build and set git config
+        run: |
+          git config --global user.email "${{ github.actor }}"
+          git config --global user.name "${{ github.repository_owner }}"
+          git rm -rf .
+          git add .
+          git commit -m "clean last build"
 
       - name: Download artifact
         uses: actions/download-artifact@v2
@@ -97,11 +102,9 @@ jobs:
 
       - name: Push on branch
         run: |
-          git config --global user.email "${{ github.actor }}"
-          git config --global user.name "${{ github.repository_owner }}"
           git add .
           git commit -m "deploy build"
-          git push -f
+          git push
 
       # - name: Publish generated content to GitHub Pages
       #   uses: tsunematsu21/actions-publish-gh-pages@v1.0.1
