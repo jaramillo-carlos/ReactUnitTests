@@ -23,9 +23,9 @@ jobs:
           [ubuntu-16.04]
           # [ubuntu-16.04, ubuntu-18.04, ubuntu-20.04, windows-2019, macos-latest]
     env:
-      REACT_APP_STAGE: local
-      REACT_APP_ENV: local
-      NODE_ENV: local
+      REACT_APP_STAGE: test
+      REACT_APP_ENV: test
+      NODE_ENV: test
     steps:
       - name: Get app code
         uses: actions/checkout@master 
