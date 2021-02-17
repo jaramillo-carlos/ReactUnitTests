@@ -67,9 +67,12 @@ jobs:
           path: build/ # or path/to/artifact
 
   package:
+    needs:
+      - test
+      - build
     runs-on: ubuntu-latest
     steps:
-      - name: Downlaod artifact
+      - name: Download artifact
         uses: actions/download-artifact@v2
         with:
           name: artifact
