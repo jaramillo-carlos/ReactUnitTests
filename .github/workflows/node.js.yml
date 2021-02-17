@@ -23,8 +23,6 @@ jobs:
           [ubuntu-16.04]
           # [ubuntu-16.04, ubuntu-18.04, ubuntu-20.04, windows-2019, macos-latest]
     env:
-      REACT_APP_STAGE: test
-      REACT_APP_ENV: test
       NODE_ENV: test
     steps:
       - name: Get app code
@@ -66,9 +64,7 @@ jobs:
       - name: Build
         run: npm run build # generate a artifact
         env: 
-          REACT_APP_STAGE: staging
-          REACT_APP_ENV: staging
-          NODE_ENV: staging
+          NODE_ENV: production
           PUBLIC_URL: ./
           # PUBLIC_URL: "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
 
