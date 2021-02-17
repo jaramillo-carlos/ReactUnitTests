@@ -13,16 +13,16 @@ export default function(state = initialState, action) {
   switch (action.type) {
     case GET_OAUTH_GITHUB_TOKEN_START:
       return { ...state }
-      break
+      // break
     case GET_OAUTH_GITHUB_TOKEN_SUCCESS:
       // const githubToken = action.loginResponse.data.githubToken)
       const githubToken = get(action, "loginResponse.data.githubToken")
       saveData(GITHUB_TOKEN, githubToken)
       return { ...state, githubToken: githubToken}
-      break
+      // break
     case GET_OAUTH_GITHUB_TOKEN_ERROR:
       return { ...state, error: true }
-      break
+      // break
     default:
       return { ...state }
   }
